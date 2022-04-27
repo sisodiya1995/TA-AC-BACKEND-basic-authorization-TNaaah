@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<header>
+    <h3>User Name :<%=article.firstName%> <%=article.lastName%></h3>
+    <a href="/users/logout">Logout</a>
+</header>
+   <h3>Article Information</h3>
+   <p>Article Author :<%=article.authorname.firstName%> <%=article.authorname.lastName%> </p>
+    <p>Title : <%=article.title%></p>
+     <p>Summary: <%=article.description%></p>
+     <p> Author: <%=article.author%></p>
+     <p>Likes : <%=article.likes%></p>
+     <div class="btn"><a href="/articles/<%=article.slug%>/like"><button>Like</button></a>
+        <a href="/articles/<%=article.slug%>/dislike"><button>Dislike</button></a>
+        <a href="/articles/<%=article.slug%>/edit"><button>Edit</button></a>
+        <a href="/articles/<%=article.slug%>/delete"><button>Delete</button></a>
+
+        <h2>Comments</h2>
+      <form action = "/articles/<%=article.slug%>/comment" method="POST">
+          <input type="text" name="title" id="" placeholder="Enter title"> <br> <br>
+          <input type="text" name="author" id="" placeholder="Enter author"> <br>  <br>
+          <button type="submit">Add comment</button>
+      </form>
+
+      <%article.commentID.forEach((comment) => {%>
+        <p>Title :  <%=comment.title%></p>
+        <p>Author : <%=comment.author%></p>
+        <p>Likes :  <%=comment.likes%></p>
+        <div class="btn"> <a href="/comments/<%=comment.slug%>/likes"><button>Likes</button></a>
+            <a href="/comments/<%=comment.slug%>/dislikes"><button>Deslike</button></a>
+            <a href="/comments/<%=comment.slug%>/edit"><button>Edit</button></a>
+            <a href="/comments/<%=comment.slug%>/delete"><button>Delete</button></a></div>
+       
+      <%})%>
+</body>
+</html>
