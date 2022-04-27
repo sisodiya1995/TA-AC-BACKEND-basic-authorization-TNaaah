@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Edit Comments</h2>
+    <form action = "/comments/<%=comment.slug%>/edit" method="POST">
+        <input type="text" name="title" id="" placeholder="Enter title" value="<%=comment.title%>"> <br> <br>
+        <input type="text" name="author" id="" placeholder="Enter author" value="<%=comment.author%>"> <br>  <br>
+        <button type="submit">Add comment</button>
+    </form>
+</body>
+</html>
