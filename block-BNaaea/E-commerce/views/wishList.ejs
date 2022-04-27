@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>User wish list</h3>
+    <h4><%=user.Name%></h4>
+    <%product.forEach((p) =>{%>
+        <p> Name : <%=p.title%></p>
+        <p> Qty : <%=p.quantity%></p>
+        <p> Price :<%=p.price%> Rs</p>
+        <p> Likes :<%=p.likes%></p>
+        <a href="/product/<%=p.id%>/del"><button>Delete</button></a>
+        <a href="/product/<%=p.id%>/dislikes"><button>Add To Cart</button></a>
+    <%})%>
+</body>
+</html>

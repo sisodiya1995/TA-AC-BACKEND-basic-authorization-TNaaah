@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product page</title>
+</head>
+<body> 
+    
+   <% if(isAdmin){%>
+    <a href="/users/logout"><button>Admin Logout</button></a>
+        <a href="/users"><button>Users</button></a>
+   <% } else { %>
+    <a href="/users/logout"><button>User Logout</button></a>
+   <% } %>
+
+      <%products.forEach((product) => { %>
+            <div> 
+                <p> Name : <%=product.title%></p>
+                <p> Qty : <%=product.quantity%></p>
+                <p> Price :<%=product.price%> Rs</p>
+                <p> Likes :<%=product.likes%></p>
+
+                <% if(isAdmin){ %>
+                    <a href="/product/<%=product.id%>/edit"><button>EDIT</button></a>
+                    <a href="/product/<%=product.id%>/delete"><button>Delete</button></a>
+                    
+                <% } else if ( isAdmin == false ) { %>
+                
+                <a href="/product/<%=product.id%>/likes"><button>Likes</button></a>
+                <a href="/product/<%=product.id%>/dislikes"><button>Deslikes</button></a>
+                <a href="/product/<%=product.id%>/wishlist"><button>wishlist</button></a>
+                <a href="/product/<%=product.id%>/addCart"><button>Add Cart</button></a>
+               
+            </div>
+        <%}%>
+            
+      <%})%>
+</body>
+</html>

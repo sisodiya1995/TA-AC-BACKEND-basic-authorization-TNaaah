@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+</head>
+<body>
+
+    <h3>Cart List</h3>
+    <h4>User Name :<%=user.Name%></h4>
+    <%product.forEach((p) =>{%>
+        <p> Name : <%=p.title%></p>
+        <p> Price :<%=p.price%> Rs</p>
+        <p> Qty</Q>:<%=p.quantity%> </p>
+        <p>Total : <%=p.price%>*<%=p.quantity%></p>
+        <a href="/product/<%=p.id%>/remove"><button>Remove</button></a>
+    <%})%>
+</body>
+</html>

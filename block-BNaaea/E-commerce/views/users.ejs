@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <h3>All Users List</h3>
+    <%users.forEach((user) => {%>
+        <% if(user.isAdmin === false){%>
+            <p>User Name : <%=user.Name%></p>
+            <p>Email : <%=user.email%></p>
+            <p>City : <%=user.city%></p>
+            <a href="/users/<%=user.id%>/block"><button>Block</button></a>
+            <a href="/users/<%=user.id%>/Unblock"><button>Unblock</button></a>
+       <% }%>
+         
+    <%})%>
+</body>
+</html>
