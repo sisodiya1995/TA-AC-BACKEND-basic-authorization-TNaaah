@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <% if(user.isAdmin){ %>
+    <a href="/users/logout"><button>Admin logout</button></a>
+        <h2>Admin Dashboard</h2>
+        <h4>Admin Name : <%=user.Name%></h4>
+         
+        <%Podcast.forEach((p) => {%>
+            <p>Title : <%=p.title%></p>
+            <p>Artists : <%=p.artists%></p>
+            <p>Song : <%=p.song%></p>
+            <p> Podcast plan : <%=p.podcastPlan%></p>
+            <a href="/podcasts/<%=p.id%>/delete"><button>Delete</button></a>
+            <a href="/podcasts/<%=p.id%>/edit"><button>Edit</button></a>
+        <% }) %> 
+
+    <%} else if(user.isAdmin === false) {%>
+        <a href="/users/logout"><button>User logout</button></a>
+        <h2>User Dashboard</h2>
+        <h4>user Name : <%=user.Name%></h4>
+        <h4>user Plan : <%=user.plan%></h4>
+        <%Podcast.forEach((p) => {%>
+            <p>Title : <%=p.title%></p>
+            <p>Artists : <%=p.artists%></p>
+            <p>Song : <%=p.song%></p>
+            <p> Podcast plan : <%=p.podcastPlan%></p>
+            <a href="/podcasts/<%=p.id%>/like"><button>Likes</button></a>
+            <a href="/podcasts/<%=p.id%>/deslike"><button>Deslike</button></a>
+        
+            <% }) %> 
+    <%} %>
+    
+</body>
+</html>
