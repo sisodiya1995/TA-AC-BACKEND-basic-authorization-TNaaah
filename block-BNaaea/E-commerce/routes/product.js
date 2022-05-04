@@ -5,7 +5,21 @@ var Product = require('../modals/product')
 var WishList = require('../modals/wishlist')
 var Cart =require('../modals/cart')
 var auth = require('../middlewares/auth')
+var multer = require('multer')
+var path = require('path')
 
+var uploadpath = path.join(__dirname ,'../public/uploads/')
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadpath)
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+    cb(null, file.fieldname + '-' + uniqueSuffix)
+  }
+})
+
+const upload = multer({ storage: storage })
 /* GET home page. */
 // router.get('/', function(req, res, next) {
 //   res.render('index', { title: 'Express' });
@@ -26,9 +40,13 @@ router.get('/new' ,(req ,res ,next) => {
 
 })
 
-router.post('/' ,(req ,res) => {
+router.post('/',upload.single('image') ,(req ,res) => {
+  console.log(req.body)
+  console.log(req.file)
+  req.body.image =req.file.filename;
    Product.create(req.body ,(err ,product) => {
      console.log(err ,product)
+
      res.redirect('/product/new')
    })
 })
@@ -208,6 +226,7 @@ router.get('/:id/wishlist' ,(req ,res) => {
          wishObj.likes = pro.likes;
          wishObj.price = pro.price;
          wishObj.userID =userID;
+         wishObj.image =pro.image;
          console.log(pro,"wish list")
          WishList.create(wishObj ,(err ,wishListp) => {
            console.log(wishListp ,"wish")
@@ -251,6 +270,7 @@ router.get('/:id/addCart' ,(req ,res) => {
         cart.likes = pro.likes;
         cart.price = pro.price;
         cart.userID =userID;
+        cart.image = pro.image;
         console.log(pro,"cart list list")
         Cart.create(cart ,(err ,wishListp) => {
           Product.findByIdAndUpdate(id ,{$inc : { quantity : -1}} ,(err,updateqty) => {

@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <title>Login form</title>
 </head>
 <body>
+    <header>
+        <a href="/"><strong>AJIO</strong></a>
+        <nav>
+    
+     <a href="/users/login" class="login">Logout</a>
+        </nav>
+      </header>
+      <h3>Welcome to AJIO</h3>
     <form action="/users/login" method="POST">
         <input type="text" name="email" id="" placeholder="enter email"><br><br>
         <input type="password" name="password" id="" placeholder="enter password"><br><br>
-         <button type="submit">Login</button>
+         <button type="submit" class="btn">Login</button>
+         <a href=""><button class="btn-2">Log with Google</button></a>
     </form>
 </body>
 </html>

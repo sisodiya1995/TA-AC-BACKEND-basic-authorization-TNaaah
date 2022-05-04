@@ -9,7 +9,8 @@ var productSchema = new schema({
     likes : {type : Number , default :0} ,
     price :{type : Number , required : true},
     commentID :[{type : schema.Types.ObjectId, ref :"Comment"}] ,
-    slug: { type: String, slug: "title" }
+    slug: { type: String, slug: "title" } ,
+    image :{type : String}
 },{timestamps : true})
 
 var Product = mongoose.model('Product' , productSchema)
