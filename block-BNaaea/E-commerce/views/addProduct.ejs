@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <title>Document</title>
 </head>
 <body>
-    <form action="/product" method="POST">
+    <header>
+        <a href="/"><strong>AJIO</strong></a>
+        <nav>
+            <h4>Hi <%=user.Name%></h4>
+            <a href="/product" class="login">Products</a>
+     <a href="/users/logout" class="login">Logout</a>
+        </nav>
+      </header>
+      <h3>Add Product</h3>
+    <form action="/product" method="POST" enctype="multipart/form-data">
          <input type="text" name="title" placeholder="Enter the title"> <br> <br>
          <input type="number" name="quantity" placeholder="Enter the qty"> <br> <br>
          <input type="number" name="price" placeholder="Enter the price"> <br> <br>
-         <button type="submit">add product</button>
+         <input type="file" name="image" id="avatar"> <br> <br>
+         <button type="submit" class="btn">add product</button>
     </form>
 </body>
 </html>

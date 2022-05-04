@@ -11,7 +11,9 @@ var cartSchema = new schema({
     price :{type : Number , required : true},
     commentID :[{type : schema.Types.ObjectId, ref :"Comment"}] ,
     userID :{type :schema.Types.ObjectId ,ref : 'User'} ,
-    slug: { type: String, slug: "title" }
+    slug: { type: String, slug: "title" },
+    image :{type : String}
+
 },{timestamps : true})
 
 
